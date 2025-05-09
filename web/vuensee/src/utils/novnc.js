@@ -103,7 +103,7 @@ export class VuenseeRFB extends RFB {
     this.qualityLevel = settings.quality
     this.compressionLevel = settings.compression
     this.showDotCursor = settings.dotCursor
-    this.viewOnly = settings.viewOnly // 修正了这里的赋值错误
+    this.viewOnly = settings = settings.viewOnly
     this.dragViewport = !this.clipViewport && this.dragViewport
       ? false
       : dragging
