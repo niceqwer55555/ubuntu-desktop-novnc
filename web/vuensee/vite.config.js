@@ -10,7 +10,10 @@ const config = {
       format: {
         comments: /^!/
       }
-    }
+    },
+{
+    rollupOptions: {
+      external: ['@novnc/
   },
   optimizeDeps: {
     include: [
