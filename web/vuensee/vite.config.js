@@ -14,6 +14,7 @@ const config = {
     rollupOptions: {
       external: ['@novnc/novnc'], 
   },
+},
   optimizeDeps: {
     include: [
       '@novnc/novnc/core/input/keysym',
