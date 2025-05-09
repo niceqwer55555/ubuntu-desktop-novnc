@@ -33,7 +33,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt update \
-    && apt install -y google-chrome-stable \
+    && apt install -y chromium-browser \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt update \
