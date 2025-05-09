@@ -7,7 +7,7 @@
 import RFB from '@novnc/novnc'
 import KeyTable from '@novnc/novnc/core/input/keysym'
 import keysyms from '@novnc/novnc/core/input/keysymdef'
-import keysym from '@novnc/novnc/core/input/keysym
+import keysym from '@novnc/novnc/core/input/keysym' // 修正了这里的引号
 import { hasScrollbarGutter, isTouchDevice } from '@novnc/novnc/core/util/browser'
 import { createAudioElement } from './dom'
 
@@ -104,7 +104,7 @@ export class VuenseeRFB extends RFB {
     this.qualityLevel = settings.quality
     this.compressionLevel = settings.compression
     this.showDotCursor = settings.dotCursor
-    this.viewOnly = settings = settings.viewOnly
+    this.viewOnly = settings.viewOnly // 修正了这里的赋值错误
     this.dragViewport = !this.clipViewport && this.dragViewport
       ? false
       : dragging
