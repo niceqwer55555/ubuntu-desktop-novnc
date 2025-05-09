@@ -120,7 +120,7 @@ COPY html.tar.gz /usr/local/lib/web/frontend/
 #RUN cd /src/web/vuensee \
 #    && yarn \
 #    && VITE_TITLE=MyVNC yarn build
-RUN ls /usr/local/lib/web/frontend/ \
+RUN ls /usr/local/lib/web/frontend/
 
 
 
