@@ -12,7 +12,7 @@ const config = {
       }
     },
     rollupOptions: {
-      external: ['@novnc/
+      external: ['@novnc/novnc'], 
   },
   optimizeDeps: {
     include: [
