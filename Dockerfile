@@ -131,10 +131,10 @@ FROM system
 LABEL maintainer="fcwu.tw@gmail.com"
 
 #COPY --from=builder /src/web/vuensee/dist/ /usr/local/lib/web/frontend/
-COPY web/static/websockify /usr/local/lib/web/frontend/static/websockify
-COPY web/static/novnc /usr/local/lib/web/frontend/static/novnc
+#COPY web/static/websockify /usr/local/lib/web/frontend/static/websockify
+#COPY web/static/novnc /usr/local/lib/web/frontend/static/novnc
 COPY rootfs /
-RUN ln -sf /usr/local/lib/web/frontend/static/websockify /usr/local/lib/web/frontend/static/novnc/utils/websockify && \
+#RUN ln -sf /usr/local/lib/web/frontend/static/websockify /usr/local/lib/web/frontend/static/novnc/utils/websockify && \
 	chmod +x /usr/local/lib/web/frontend/static/websockify/run
 
 EXPOSE 80
