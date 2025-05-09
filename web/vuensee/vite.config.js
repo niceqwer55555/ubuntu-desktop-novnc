@@ -10,6 +10,9 @@ const config = {
       format: {
         comments: /^!/
       }
+    },
+    rollupOptions: {
+      external: ['vue-i18n'],
     }
   },
   optimizeDeps: {
