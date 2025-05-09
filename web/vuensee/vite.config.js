@@ -22,7 +22,7 @@ const config = {
       '@novnc/novnc/core/util/browser'
     ]
   }
-}
+};
 
 if (process.env.DOCKER_DEV_PORT) {
   const port = parseInt(process.env.DOCKER_DEV_PORT, 10)
@@ -32,7 +32,7 @@ if (process.env.DOCKER_DEV_PORT) {
     hmr: {
       port: port
     }
-  })
+  });
 }
 
-export default config
+export default config;
