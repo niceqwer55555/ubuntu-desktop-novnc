@@ -115,10 +115,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && apt-get install -y yarn
 
 # build frontend
-COPY web /src/web
-RUN cd /src/web/vuensee \
-    && yarn \
-    && VITE_TITLE=MyVNC yarn build
+#COPY web /src/web
+COPY html.tar /usr/local/lib/web/frontend
+#RUN cd /src/web/vuensee \
+#    && yarn \
+#    && VITE_TITLE=MyVNC yarn build
 
 
 
