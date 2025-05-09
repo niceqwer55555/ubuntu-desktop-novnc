@@ -28,14 +28,12 @@ RUN apt update \
     && apt install -y --no-install-recommends --allow-unauthenticated \
         xvfb x11vnc \
         tini \
+        chromium-browser \
         vim-tiny firefox ttf-ubuntu-font-family ttf-wqy-zenhei  \
     && apt autoclean -y \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt update \
-    && apt install -y chromium-browser \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN apt update \
     && apt install -y --no-install-recommends --allow-unauthenticated \
@@ -113,7 +111,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 
 # build frontend
 #COPY web /src/web
-COPY html.tar.gz /usr/local/lib/web/frontend/
+ADD html.tar.gz /usr/local/lib/web/frontend/
 #RUN cd /src/web/vuensee \
 #    && yarn \
 #    && VITE_TITLE=MyVNC yarn build
