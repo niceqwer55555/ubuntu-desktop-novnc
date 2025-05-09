@@ -1,0 +1,32 @@
+
+echo 1024 65000 > /proc/sys/net/ipv4/ip_local_port_range
+sudo sysctl -w net.ipv4.tcp_tw_recycle =1
+sudo sysctl -w net.ipv4.tcp_tw_reuse=1
+echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout
+
+
+cat  /proc/sys/net/ipv4/ip_local_port_range
+
+
+首先，确保你的 Docker 守护进程配置为允许远程访问。编辑 Docker 守护进程配置文件
+
+[Service]
+Type=notify
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2375
+
+
+
+修改Docker配置文件
+
+首先，需要编辑Docker的服务文件，通常位于/usr/lib/systemd/system/docker.service。在[Service]部分，找到ExecStart属性，并添加-H tcp://0.0.0.0:2375，这样就会对外开放2375端口。例如：
+
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:2375
+
+
+sudo ss -tuln | grep 2375
+
+systemctl daemon-reload
+systemctl restart docker
