@@ -33,11 +33,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt update \
-    && apt install -y gpg-agent \
-    && curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && (dpkg -i ./google-chrome-stable_current_amd64.deb || apt-get install -fy) \
-    && curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add \
-    && rm google-chrome-stable_current_amd64.deb \
+    && apt install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt update \
