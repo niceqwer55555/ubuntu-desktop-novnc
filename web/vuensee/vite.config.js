@@ -1,9 +1,6 @@
 import vue from '@vitejs/plugin-vue'
-import { defineConfig } from 'vite';
 
-const port = parseInt(process.env.DOCKER_DEV_PORT, 10)
-export default defineConfig({
-  port,
+const config = {
   base: '',
   plugins: [
     vue()
@@ -13,9 +10,6 @@ export default defineConfig({
       format: {
         comments: /^!/
       }
-    },
-    rollupOptions: {
-      external: ['vue-i18n'],
     }
   },
   optimizeDeps: {
@@ -25,9 +19,17 @@ export default defineConfig({
       '@novnc/novnc/core/util/browser'
     ]
   }
-})
+}
 
+if (process.env.DOCKER_DEV_PORT) {
+  const port = parseInt(process.env.DOCKER_DEV_PORT, 10)
 
+  Object.assign(config, {
+    port,
+    hmr: {
+      port: port
+    }
+  })
+}
 
-// export default config
-// export default defineConfig
+export default config
