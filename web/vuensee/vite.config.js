@@ -11,7 +11,6 @@ const config = {
         comments: /^!/
       }
     },
-{
     rollupOptions: {
       external: ['@novnc/
   },
