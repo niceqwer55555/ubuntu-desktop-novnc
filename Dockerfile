@@ -27,6 +27,7 @@ RUN apt update \
 RUN apt update \
     && apt install -y --no-install-recommends --allow-unauthenticated \
         xvfb x11vnc \
+        tini \
         vim-tiny firefox ttf-ubuntu-font-family ttf-wqy-zenhei  \
     && apt autoclean -y \
     && apt autoremove -y \
@@ -48,9 +49,9 @@ RUN apt update \
 # libreoffice  pinta language-pack-zh-hant language-pack-gnome-zh-hant firefox-locale-zh-hant libreoffice-l10n-zh-tw
 
 # tini to fix subreap
-ARG TINI_VERSION=v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
-RUN chmod +x /bin/tini
+#ARG TINI_VERSION=v0.18.0
+#ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
+#RUN chmod +x /bin/tini
 
 # ffmpeg
 RUN apt update \
