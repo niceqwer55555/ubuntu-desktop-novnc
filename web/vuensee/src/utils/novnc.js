@@ -7,6 +7,7 @@
 import RFB from '@novnc/novnc'
 import KeyTable from '@novnc/novnc/core/input/keysym'
 import keysyms from '@novnc/novnc/core/input/keysymdef'
+import keysym from '@novnc/novnc/core/input/keysym
 import { hasScrollbarGutter, isTouchDevice } from '@novnc/novnc/core/util/browser'
 import { createAudioElement } from './dom'
 
