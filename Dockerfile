@@ -135,7 +135,7 @@ LABEL maintainer="fcwu.tw@gmail.com"
 #COPY web/static/novnc /usr/local/lib/web/frontend/static/novnc
 COPY rootfs /
 #RUN ln -sf /usr/local/lib/web/frontend/static/websockify /usr/local/lib/web/frontend/static/novnc/utils/websockify && \
-	chmod +x /usr/local/lib/web/frontend/static/websockify/run
+#	chmod +x /usr/local/lib/web/frontend/static/websockify/run
 
 EXPOSE 80
 WORKDIR /root
