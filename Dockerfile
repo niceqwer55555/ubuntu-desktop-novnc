@@ -29,6 +29,8 @@ RUN apt update \
         xvfb x11vnc \
         tini \
         chromium-browser \
+        make \
+        git \
         vim-tiny firefox ttf-ubuntu-font-family ttf-wqy-zenhei  \
     && apt autoclean -y \
     && apt autoremove -y \
