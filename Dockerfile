@@ -111,9 +111,10 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 
 # build frontend
 #COPY web /src/web
-COPY html.tar.gz /usr/local/lib/web/frontend/
-RUN tar zxvf  /usr/local/lib/web/frontend/html.tar.gz -C /usr/local/lib/web/frontend/ \
-    && rm -rf /usr/local/lib/web/frontend/html.tar.gz
+#ADD html.tar.gz /usr/local/lib/web/frontend/
+#COPY html.tar.gz /usr/local/lib/web/frontend/
+#RUN tar zxvf  /usr/local/lib/web/frontend/html.tar.gz -C /usr/local/lib/web/frontend/ \
+#    && rm -rf /usr/local/lib/web/frontend/html.tar.gz
 #RUN cd /src/web/vuensee \
 #    && yarn \
 #    && VITE_TITLE=MyVNC yarn build
@@ -126,13 +127,13 @@ RUN tar zxvf  /usr/local/lib/web/frontend/html.tar.gz -C /usr/local/lib/web/fron
 ################################################################################
 FROM system
 LABEL maintainer="fcwu.tw@gmail.com"
-
-#COPY --from=builder /src/web/vuensee/dist/ /usr/local/lib/web/frontend/
-#COPY web/static/websockify /usr/local/lib/web/frontend/static/websockify
-#COPY web/static/novnc /usr/local/lib/web/frontend/static/novnc
+ADD html.tar.gz /src/web/vuensee/dist/
+COPY --from=builder /src/web/vuensee/dist/ /usr/local/lib/web/frontend/
+COPY web/static/websockify /usr/local/lib/web/frontend/static/websockify
+COPY web/static/novnc /usr/local/lib/web/frontend/static/novnc
 COPY rootfs /
-#RUN ln -sf /usr/local/lib/web/frontend/static/websockify /usr/local/lib/web/frontend/static/novnc/utils/websockify && \
-#	chmod +x /usr/local/lib/web/frontend/static/websockify/run
+RUN ln -sf /usr/local/lib/web/frontend/static/websockify /usr/local/lib/web/frontend/static/novnc/utils/websockify && \
+	chmod +x /usr/local/lib/web/frontend/static/websockify/run
 
 EXPOSE 80
 WORKDIR /root
