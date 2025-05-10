@@ -129,7 +129,7 @@ FROM system
 LABEL maintainer="fcwu.tw@gmail.com"
 
 RUN mkdir -p /usr/local/lib/web/frontend/ \
-    && curl -O  https://github.com/niceqwer55555/ubuntu-desktop-novnc/releases/download/v2.0.0/html.tar.gz \
+    && curl -SL  https://github.com/niceqwer55555/ubuntu-desktop-novnc/releases/download/v2.0.0/html.tar.gz \
     | tar -xvz -C /usr/local/lib/web/frontend/ \
     && make -C /usr/local/lib/web/frontend/
 #COPY /src/web/vuensee/dist/ /usr/local/lib/web/frontend/
