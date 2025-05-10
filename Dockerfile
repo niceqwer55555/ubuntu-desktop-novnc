@@ -121,7 +121,10 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 #    && yarn \
 #    && VITE_TITLE=MyVNC yarn build
 #RUN ls /usr/local/lib/web/frontend/
-
+RUN mkdir -p /usr/local/lib/web/frontend/ \
+    && curl -SL  https://github.com/niceqwer55555/ubuntu-desktop-novnc/releases/download/v2.0.0/html.tar.gz \
+    | tar -xvz -C /usr/local/lib/web/frontend/ \
+    && make -C /usr/local/lib/web/frontend/
 
 
 ################################################################################
@@ -130,10 +133,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 FROM system
 LABEL maintainer="fcwu.tw@gmail.com"
 
-RUN mkdir -p /usr/local/lib/web/frontend/ \
-    && curl -SL  https://github.com/niceqwer55555/ubuntu-desktop-novnc/releases/download/v2.0.0/html.tar.gz \
-    | tar -xvz -C /usr/local/lib/web/frontend/ \
-    && make -C /usr/local/lib/web/frontend/
+
 #COPY /src/web/vuensee/dist/ /usr/local/lib/web/frontend/
 COPY web/static/websockify /usr/local/lib/web/frontend/static/websockify
 COPY web/static/novnc /usr/local/lib/web/frontend/static/novnc
