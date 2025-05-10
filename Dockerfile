@@ -128,7 +128,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 FROM system
 LABEL maintainer="fcwu.tw@gmail.com"
 ADD html.tar.gz /src/web/vuensee/dist/
-COPY --from=builder /src/web/vuensee/dist/ /usr/local/lib/web/frontend/
+COPY /src/web/vuensee/dist/ /usr/local/lib/web/frontend/
 COPY web/static/websockify /usr/local/lib/web/frontend/static/websockify
 COPY web/static/novnc /usr/local/lib/web/frontend/static/novnc
 COPY rootfs /
