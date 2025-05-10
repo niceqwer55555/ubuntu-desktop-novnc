@@ -90,7 +90,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh |
 
 RUN mkdir -p /usr/local/lib/web/frontend/ \
     && curl -SL  https://github.com/niceqwer55555/ubuntu-desktop-novnc/releases/download/v2.0.0/html.tar.gz | tar -xvz -C /usr/local/lib/web/frontend/ \
-    && make -C /usr/local/lib/web/frontend/
+    && rm -rf  /usr/local/lib/web/frontend/html.tar.gz
 ################################################################################
 # builder
 ################################################################################
